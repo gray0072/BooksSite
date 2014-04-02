@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Books.Models.Book>
+
+<div class="js-books">
+	<h4>Total: @Model.Count() books</h4>
+
+	@foreach (var book in Model)
+	{
+		<div class="book">
+			<h4>@book.Title</h4>
+    
+			<p>Author: @book.Author</p>
+			<p>Price: @book.Price</p>
+			<p>Author: @book.Genre</p>   
+			<p>Published: @book.PublishDate</p>  
+			<p><i>@book.Description</i></p> 
+		</div>
+	}
+
+</div>

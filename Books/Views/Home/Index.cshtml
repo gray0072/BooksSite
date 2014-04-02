@@ -1,0 +1,49 @@
+﻿@model Books.Models.ViewModels.BookModel
+
+<div>
+	<label>
+		Filter by genre:
+		<select id="genre">
+			<option value="">No filter...</option>
+			@foreach (var genre in Model.Genres)
+			{
+				<option value="@genre">@genre</option>
+			}
+		</select>
+	</label>
+
+</div>
+
+<div>
+	<label>
+		Filter by title:
+		<input id="title" type="text" placeholder="No filter..." />
+	</label>
+
+</div>
+
+@Html.Partial("Books", Model.Books)
+
+<script>
+
+    $(function() {
+        var refreshBooks = function() {
+            var genre = $("#genre").val();
+            var title = $("#title").val();
+
+            $.ajax('@Url.Action("ByFilter")',
+                {
+                    data: { genre: genre, titleFilter: title },
+                    success: function(data) {
+                        $(".js-books").replaceWith(data);
+                    }
+                }
+            );
+        };
+
+        $("#title,#genre").change(refreshBooks);
+    });
+
+</script>
+
+
