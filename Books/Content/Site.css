@@ -56,3 +56,19 @@ h5, h6 {
     border-bottom: 1px dotted black;
 }
 
+.filter {
+    margin-top: 5px;
+}
+
+.filter label {
+    display: inline-block;
+    width: 100px;
+}
+
+input {
+    width: 160px;
+}
+
+select{
+    width: 164px;
+}

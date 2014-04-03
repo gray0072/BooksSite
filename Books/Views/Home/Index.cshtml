@@ -1,25 +1,23 @@
 ﻿@model Books.Models.ViewModels.BookModel
 
-<div>
-	<label>
-		Filter by genre:
-		<select id="genre">
-			<option value="">No filter...</option>
-			@foreach (var genre in Model.Genres)
-			{
-				<option value="@genre">@genre</option>
-			}
-		</select>
-	</label>
-
+<div class="filter">
+    <label>
+        Filter by genre:
+    </label>
+    <select id="genre">
+        <option value="">No filter...</option>
+        @foreach (var genre in Model.Genres)
+        {
+            <option value="@genre">@genre</option>
+        }
+    </select>
 </div>
 
-<div>
-	<label>
-		Filter by title:
-		<input id="title" type="text" placeholder="No filter..." />
-	</label>
-
+<div class="filter">
+    <label>
+        Filter by title:
+    </label>
+    <input id="title" type="text" placeholder="No filter..." />
 </div>
 
 @Html.Partial("Books", Model.Books)
