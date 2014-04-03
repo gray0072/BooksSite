@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Books.Models
 {
-	interface IBookService
+	public interface IBookService
 	{
 		List<Book> GetAll();
 

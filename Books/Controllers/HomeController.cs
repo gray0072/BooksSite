@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
 using Books.Models;
 using Books.Models.ViewModels;
@@ -14,9 +11,9 @@ namespace Books.Controllers
 	{
 		private IBookService _service;
 
-		public HomeController()
-		{
-			this._service = new BookService(HostingEnvironment.MapPath(@"~\App_Data\books.xml"));
+        public HomeController(IBookService service)
+        {
+            this._service = service;
 		}
 
 		public ActionResult Index()

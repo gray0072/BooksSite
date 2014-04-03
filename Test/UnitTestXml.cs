@@ -11,22 +11,38 @@ namespace Test
 	[TestClass]
 	public class UnitTestXml
 	{
-		[TestMethod]
+        private const string XmlPath = @"Xml\books.xml";
+
+	    [TestMethod]
 		public void LoadXml()
 		{
-			var service = new BookService(@"G:\BooksSite\Books\App_Data\books.xml");
-			var result = service.GetAll();
+		    this.GetBooks();
 		}
 
-		[TestMethod]
+        [TestMethod]
 		public void LoadXmlNotEmptyList()
 		{
-			var service = new BookService(@"G:\BooksSite\Books\App_Data\books.xml");
-			var result = service.GetAll();
-			if (result.Count == 0)
+            var books = this.GetBooks();
+            if (books.Count == 0)
 			{
 				throw new Exception();
 			}
 		}
+
+        [TestMethod]
+        public void LoadXmlLoadedFullList()
+        {
+            var books = this.GetBooks();
+            if (books.Count != 12)
+            {
+                throw new Exception();
+            }
+        }
+
+        private List<Book> GetBooks()
+        {
+            var service = new BookService(XmlPath);
+            return service.GetAll();
+        }
 	}
 }
